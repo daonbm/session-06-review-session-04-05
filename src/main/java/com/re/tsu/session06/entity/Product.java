@@ -1,6 +1,7 @@
 package com.re.tsu.session06.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,7 +34,9 @@ public class Product {
     private String name;
     private String description;
     private String link;
-    private String img_url;
+
+    @Column(name = "img_url")
+    private String imgUrl;
     private Double price;
     private Integer qty;
 }

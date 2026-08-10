@@ -3,6 +3,8 @@ package com.re.tsu.session06.mapper.impl;
 import com.re.tsu.session06.dto.request.ProductCreateRequest;
 import com.re.tsu.session06.dto.ProductDto;
 import com.re.tsu.session06.dto.response.ProductCreateResponse;
+import com.re.tsu.session06.dto.response.ProductImgUpdateResponse;
+import com.re.tsu.session06.dto.response.ProductUpdateResponse;
 import com.re.tsu.session06.entity.Category;
 import com.re.tsu.session06.entity.Product;
 import com.re.tsu.session06.mapper.ProductMapper;
@@ -49,6 +51,23 @@ public class ProductMapperImpl implements ProductMapper {
     public ProductCreateResponse toCreationDto(Product entity) {
         ProductCreateResponse dto = new ProductCreateResponse();
         BeanUtils.copyProperties(entity, dto);
+        dto.setCategoryId(entity.getCategory().getId());
+        return dto;
+    }
+
+    @Override
+    public ProductImgUpdateResponse toUpdateImgDto(Product entity) {
+        ProductImgUpdateResponse dto = new ProductImgUpdateResponse();
+        BeanUtils.copyProperties(entity, dto);
+        dto.setImgUrl(entity.getImgUrl());
+        return dto;
+    }
+
+    @Override
+    public ProductUpdateResponse toUpdateDto(Product entity) {
+        ProductUpdateResponse dto = new ProductUpdateResponse();
+        BeanUtils.copyProperties(entity, dto);
+        dto.setImgUrl(entity.getImgUrl());
         return dto;
     }
 }
